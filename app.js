@@ -112,22 +112,25 @@ function onOpenModalWindow (evt) {
 
 modalWindow.addEventListener('click', onCloseModalWindow);
 
-function onCloseModalWindow (evt) {
-  evt.preventDefault();
 
- if ( evt.target.dataset.action === "close-lightbox" || evt.target.className === 'lightbox__overlay') {
+function closeModal(){
   modalWindow.classList.remove('is-open');
   lightBoxImage.src = "";
   lightBoxImage.alt = "";
+};
+
+function onCloseModalWindow (evt) {
+  
+ if ( evt.target.dataset.action === "close-lightbox" || evt.target.className === 'lightbox__overlay') {
+  closeModal()
  };
 };
 
 window.addEventListener('keydown', onCloseModalKey )
 
 function onCloseModalKey (evt){
+  
  if (evt.key === "Escape") {
-  modalWindow.classList.remove('is-open');
-  lightBoxImage.src = "";
-  lightBoxImage.alt = "";
+    closeModal()
  }
 };
